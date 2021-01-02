@@ -1,7 +1,6 @@
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-
 import javax.swing.*;
 
 public class Display extends JFrame {
@@ -36,7 +35,10 @@ public class Display extends JFrame {
 		graphics.setColor(Color.BLACK);
 		graphics.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 		
+		game.getGameobject().forEach(gameObject -> graphics.drawImage(gameObject.getSprite(),gameObject.position.getX(),gameObject.position.getY(), null));
+		
 		graphics.dispose();
 		bufferStrategy.show();
+		
 	}
 }

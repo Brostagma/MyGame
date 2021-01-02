@@ -28,12 +28,15 @@ public class GameLoop implements Runnable {
 			accumulator += lastRenderTimeInSeconds;
 			lastUpdate = currentTime;
 			
-			while(accumulator > updateRate) {
+			if(accumulator >= updateRate) {
 				
-				update();
-				accumulator -= updateRate;
+				while(accumulator > updateRate) {
+					
+					update();
+					accumulator -= updateRate;
+				}
+				render();
 			}
-			render();
 			printStats();
 		}
 	}
